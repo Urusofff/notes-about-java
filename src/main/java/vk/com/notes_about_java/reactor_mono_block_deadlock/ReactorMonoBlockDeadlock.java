@@ -1,6 +1,5 @@
 package vk.com.notes_about_java.reactor_mono_block_deadlock;
 
-import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import vk.com.notes_about_java.client.Client;
@@ -13,7 +12,6 @@ import java.util.Objects;
 import java.util.Set;
 
 @Service
-@Log
 public record ReactorMonoBlockDeadlock(ClientService clientService) {
 
     // https://habr.com/en/articles/741464/
@@ -38,10 +36,10 @@ public record ReactorMonoBlockDeadlock(ClientService clientService) {
                 )// <-- Flux<Mono<ClientGroup>> if run on map function
                 .reduce(new ClientGroupsCount(1, 0),
                         (clientsCount, newClientGroup) -> {
-                            Integer id = Objects.requireNonNull(newClientGroup).id(); // <-- DEADLOCK on block in map!!!
+                            Integer id = Objects.requireNonNull(newClientGroup.block()).id(); // <-- DEADLOCK on block in map!
                             if (id.equals(clientsCount.groupId())) {
                                 Integer count = clientsCount.countOfClients();
-                                int i = count + Objects.requireNonNull(newClientGroup).clients().size();
+                                int i = count + Objects.requireNonNull(newClientGroup.block()).clients().size();
                                 return new ClientGroupsCount(id, i);
                             }
                             return clientsCount;
