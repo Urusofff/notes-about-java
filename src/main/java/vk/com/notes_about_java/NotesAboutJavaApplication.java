@@ -4,6 +4,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import vk.com.notes_about_java.config.AppConfig;
 import vk.com.notes_about_java.reactor_mono_block_deadlock.ReactorMonoBlockDeadlock;
 
+/**
+ * @author Maxim Urusov
+ *
+ * @see <a href="https://vk.com/notes_about_java"> VK.com</a>
+ * @see <a href="https://t.me/notes_about_java"> Telegram</a>
+ */
+
 public class NotesAboutJavaApplication {
 
     public static void main(final String[] args) {
