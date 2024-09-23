@@ -5,10 +5,11 @@ import vk.com.notes_about_java.config.AppConfig;
 import vk.com.notes_about_java.reactor_mono_block_deadlock.ReactorMonoBlockDeadlock;
 
 /**
- * @author Maxim Urusov
+ * @author Maksim Urusov
  *
  * @see <a href="https://vk.com/notes_about_java"> VK.com</a>
  * @see <a href="https://t.me/notes_about_java"> Telegram</a>
+ * @see <a href="https://boosty.to/urusoff"> Boosty</a>
  */
 
 public class NotesAboutJavaApplication {
